@@ -1,0 +1,198 @@
+html {
+    background: #FFF;
+    color: #31343e;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1 {
+    background-color: #f9f9f9;
+    font-size: 60px;
+    text-transform: uppercase;
+    padding: 35px;
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #eb5f48;
+    font-weight: bold;
+    font-size: 33px;
+    text-transform: uppercase;
+    margin: 30px 0;
+}
+
+h3 {
+    color: #FFF;
+    text-transform: uppercase;
+    padding: 20px 15px;
+}
+
+hr {
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid #eaeaea;
+}
+
+header {
+    background-color: #31343e;
+}
+
+.logo img {
+    display: block;
+    width: 200px;
+    padding: 40px 0;
+}
+
+.container {
+    width: 980px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav {
+    background-color: #eb5f48;
+    margin: -10px 0 0 0;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    width: 25%;
+    padding: 20px 0;
+    margin-top: 5px;
+    background-color: #eaeaea;
+    text-align: center;
+    border-left: 1px solid #dcdcdc;
+}
+
+nav .active {
+    color: #FFF;
+    background-color: #eb5f48;
+    border: none;
+}
+
+.moviesList {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.moviesList img {
+    height: 200px;
+}
+
+.moviesList .title {
+    margin: 12px 0 5px;
+    text-transform: uppercase;
+}
+
+.moviesList .year {
+    color: #eb5f48;
+}
+
+.greyBg {
+    background-color: #31343e;
+}
+
+.orangeBg {
+    background-color: #eb5f48;
+}
+
+.myFavoriteMovies {
+    display: flex;
+}
+
+.myList {
+    width: 57%;
+}
+
+.myList ul {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    max-height: 500px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.myList li {
+    position: relative;
+    margin: 20px;
+    border: 3px solid #f9f9f9;
+    padding: 5px;
+}
+
+.myList .popcorn {
+    height: 100px;
+}
+
+.myList .trash {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+}
+
+.myList .trash img {
+    height: 20px;
+    display: block;
+}
+
+.myList .title {
+    font-weight: bold;
+    margin: 10px 0 10px;
+    font-size: 23px;
+    text-align: left;
+}
+
+.myList .line {
+    margin: 0 0 5px;
+    text-align: left;
+}
+
+.myList .orange {
+    color: #eb5f48;
+}
+
+.form {
+    width: 40%;
+    margin-left: 3%;
+}
+
+form {
+    padding: 25px 20px;
+    text-align: left;
+}
+
+form label {
+    font-size: 20px;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+form input[type="text"] {
+    float: right;
+    border: 1px solid #eaeaea;
+    width: 77%;
+    height: 25px;
+}
+
+form .line {
+    margin-bottom: 15px;
+}
+
+button {
+    display: block;
+    color: #FFF;
+    background-color: #31343e;
+    padding: 10px 15px;
+    margin: 25px auto 0;
+    text-align: center;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
