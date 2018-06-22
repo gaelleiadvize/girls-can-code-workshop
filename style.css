@@ -135,6 +135,9 @@ nav .active {
     top: 5px;
     right: 5px;
     display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .myList .trash img {
@@ -163,29 +166,29 @@ nav .active {
     margin-left: 3%;
 }
 
-form {
+.form form {
     padding: 25px 20px;
     text-align: left;
 }
 
-form label {
+.form label {
     font-size: 20px;
     line-height: 25px;
     vertical-align: middle;
 }
 
-form input[type="text"] {
+.form input[type="text"] {
     float: right;
     border: 1px solid #eaeaea;
     width: 77%;
     height: 25px;
 }
 
-form .line {
+.form .line {
     margin-bottom: 15px;
 }
 
-button {
+.addButton {
     display: block;
     color: #FFF;
     background-color: #31343e;
