@@ -1,0 +1,23 @@
+{
+  "name": "cinoch",
+  "version": "1.0.0",
+  "description": "Girls can code workshop",
+  "main": "server.js",
+  "repository": "git@github.com:gaelleiadvize/girls-can-code-workshop.git",
+  "author": "girlswhocode",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "start-dev": "export $(cat .env) && nodemon server.js",
+    "docs": "apidoc -i src -o docs"
+  },
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.17.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
