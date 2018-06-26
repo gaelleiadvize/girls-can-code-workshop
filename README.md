@@ -30,10 +30,10 @@ Before you can run or deploy the sample, you need to do the following:
         
 #Authors
 
-* @gaelleiadvize 
-* @maylencita
-* @CelyaRousseau
-* @fdeurioste
+*   [@Gaelleacas](https://github.com/gaelleiadvize)
+*   [@maylencita](https://github.com/maylencita)
+*   [@CelyaRousseau](https://github.com/CelyaRousseau)
+*   [@fdeurioste](https://github.com/fdeurioste)
             
 
 [npm]:https://www.taniarascia.com/how-to-install-and-use-node-js-and-npm-mac-and-windows/
