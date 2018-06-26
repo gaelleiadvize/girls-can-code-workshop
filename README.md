@@ -30,8 +30,8 @@ Before you can run or deploy the sample, you need to do the following:
         
 #Authors
 
-* @gaelleiadvize 
-* @maylencita
+* @github/gaelleiadvize 
+* @maylencitav
 * @CelyaRousseau
 * @fdeurioste
             
