@@ -6,6 +6,7 @@
 <img src="https://raw.githubusercontent.com/gaelleiadvize/girls-can-code-workshop/master/public/images/logo-gcc.jpg" width="150">
 </p>
 
+
 ## Setup
 
 Before you can run or deploy the sample, you need to do the following:
@@ -24,6 +25,15 @@ Before you can run or deploy the sample, you need to do the following:
     or
         
         npm run start   
+        
+        
+        
+#Authors
+
+* @gaelleiadvize 
+* @maylencita
+* @CelyaRousseau
+* @fdeurioste
             
 
 [npm]:https://www.taniarascia.com/how-to-install-and-use-node-js-and-npm-mac-and-windows/
