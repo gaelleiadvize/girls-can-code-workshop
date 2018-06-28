@@ -134,6 +134,19 @@
                 <p class="year">(2013)</p>
             </div>
         </div>
+
+        <h2>Top 10 films</h2>
+        <div class="moviesList">
+            <!-- loop over movies and render them -->
+            <% movies.forEach((movie) => { %>
+            <div>
+                <img src=<%= movie.picture %> alt=<%= movie.title %>/>
+                <p class="title"><%= movie.title %></p>
+                <p class="year">(<%= movie.year %>)</p>
+            </div>
+            <% }) %>
+        </div>
+
     </div>
 </body>
 </html>

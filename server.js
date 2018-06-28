@@ -1,70 +1,72 @@
 const express = require('express');
-const app = express();
+const application = express();
 const database = require('./database');
 
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
+application.set('view engine', 'ejs');
+application.use(express.static('public'));
 
+application.get('/', (request, response) => {
 
-app.get('/', (req, res) => {
+    database
+    .list()
+    .then((movies) => {
 
-    let data = {
-        'coucou' : 'COUCOU'
-    };
+        response.render('main', {movies: movies}, function(err, result) {
+            if (err) throw err;
 
-   let  content = res.render('main', data);
-   // let content =  ejs.renderFile('main.ejs', [], [], function(err, str){
-   //      // str => Rendered HTML string
-   //  });
+            console.log("all is good");
+        })
+    });
 
-
-    res.send(content);
 });
 
-app.post('/', (req, res) => {
+application.post('/create', (request, response) => {
 
-    let data = {
-        'coucou' : 'COUCOU'
-    };
+    const title = request.body.title;
+    const year = request.body.year;
+    const picture = request.body.picture;
 
-    let  content = res.render('main', data);
-    // let content =  ejs.renderFile('main.ejs', [], [], function(err, str){
-    //      // str => Rendered HTML string
-    //  });
+    database
+    .create(title, year, picture)
+    .then((movieCreated) => {
+        console.log("movie added to database : " + movieCreated);
 
+        response.redirect("/");
+    }).catch((err) => {
+        return console.error(err);
+    });
 
-    res.send(content);
 });
 
+application.post('/favorite', (request, response) => {
 
+    const id = request.body.id;
+    const favorite = request.body.favorite;
 
+    database.update(favorite, id).then((movieUpdated) => {
+        console.log("movie updated to database : " + movieUpdated);
 
+        response.redirect("/");
+    }).catch((err) => {
+        return console.error(err);
+    });
 
-app.listen(3000, function () {
+});
 
-    database.connexion();
+application.delete('/delete', (request, response) => {
 
+    const id = request.body.id;
 
-    // con.query('SELECT * FROM movies', (err,rows) => {
-    //     if(err) throw err;
-    //
-    //     console.log('Data received from Db:\n');
-    //     console.log(rows);
-    // });
+    database.delete(id).then((movieDeleted) => {
+        console.log("movie deleted to database : " + movieDeleted);
 
+        response.redirect("/");
+    }).catch((err) => {
+        return console.error(err);
+    });
 
+});
 
+application.listen(3000);
 
-
-
-
-
-
-
-
-
-
-
-
-    console.log('Go to http://localhost:3000 dans ton navigateur :) ')
-})
+console.log('Go to http://localhost:3000 dans ton navigateur :) ');
