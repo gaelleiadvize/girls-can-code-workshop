@@ -1,5 +1,6 @@
 'use strict';
 
+// We use the mysql.js library to connect to the DB 
 const mysql = require('mysql');
 
 // First you need to create a connection to the db
@@ -13,7 +14,6 @@ const connexion = mysql.createPool({
 
 
 let listMovies = (callback) => {
-
     let query = "SELECT * FROM movies";
 
     connexion.query(query, callback)
@@ -32,7 +32,7 @@ let deleteMovie = (id, callback) => {
 };
 
 let updateMovie = (favorite, id, callback) => {
-    let query = "UPDATE movies SET `favorite` = NOT ?  WHERE id = ?";
+    let query = "UPDATE movies SET `favorite` =  ?  WHERE id = ?";
 
     connexion.query(query, [favorite, id], callback);
 };

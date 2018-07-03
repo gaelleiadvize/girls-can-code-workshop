@@ -3,13 +3,16 @@
 const express = require('express');
 const database = require('./database');
 const bodyParser = require('body-parser');
+// We use express to help us run the web-app
 const application = express();
 
+// Some configuration
 application.set('view engine', 'ejs');
 application.use(express.static('public'));
 application.use(bodyParser.urlencoded({extended: false}));
 application.use(bodyParser.json());
 
+// This function will be called when you go to http://localhost:3000/
 application.get('/', (request, response) => {
 
     let SortMovieByTitle = (movies) => {
@@ -36,6 +39,8 @@ application.get('/', (request, response) => {
     });
 });
 
+// This function will be called when you call http://localhost:3000/create from a html-form
+// In other words, when you create a new movie via the "Add to my movie list" form
 application.post('/create', (request, response) => {
 
     const movie = {
@@ -55,6 +60,7 @@ application.post('/create', (request, response) => {
 
 });
 
+// This is the function that is called when a movie is added to favorites after clicking on the star icon
 application.post('/update/:id', (request, response) => {
 
     const id = request.params.id;
@@ -71,6 +77,33 @@ application.post('/update/:id', (request, response) => {
 
 });
 
+application.post('/addtofavorites/:id', (request, response) => {
+    const id = request.params.id;
+
+    database.update(true, id, function(err, movieUpdated) {
+        if (err)
+            throw err;
+        else {
+            console.log("movie updated to database");
+            response.redirect("/");
+        }
+    });
+})
+
+application.post('/removefromfavorites/:id', (request, response) => {
+    const id = request.params.id;
+
+    database.update(false, id, function(err, movieUpdated) {
+        if (err)
+            throw err;
+        else {
+            console.log("movie updated to database");
+            response.redirect("/");
+        }
+    });
+})
+
+// This function is called when you click on the trash icon to delete a movie
 application.post('/delete/:id', (request, response) => {
     const id = request.params.id;
 
@@ -85,6 +118,7 @@ application.post('/delete/:id', (request, response) => {
 
 });
 
+// Run the application on port 3000
 application.listen(3000);
 
 console.log('Go to http://localhost:3000 dans ton navigateur :) ');

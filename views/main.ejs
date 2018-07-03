@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- This is the template that renders the html page you see in localhost:3000 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,9 +32,10 @@
         <div class="myList">
             <h3 class="greyBg">My favorite movies</h3>
             <ul>
+                <!-- call myFavorite function and then loop over the resulting list to display each film -->
                 <% myFavorites.forEach((favorite) => { %>
                 <li>
-                    <form action="/delete/<%= favorite.id %>" method="POST">
+                    <form action="/removefromfavorites/<%= favorite.id %>" method="POST">
                         <img src=<%= favorite.picture %> alt="movie" class="popcorn"/>
                         <div class="title"><%= favorite.title %></div>
                         <div class="line">
@@ -45,7 +47,7 @@
                             <span class="orange">Director</span>
                         </div>
                         <button type="submit" value="Submit" class="trash"><img src="images/trash.png"
-                                                                                alt="Delete movie"/></button>
+                                                                                alt="remove from favorites"/></button>
                     </form>
                 </li>
                 <% }) %>
@@ -74,13 +76,13 @@
     <hr/>
 
 
-    <h2>Top 6 films</h2>
+    <h2>Top films</h2>
     <div class="moviesList">
 
         <!-- loop over movies and render them -->
         <% movies.forEach((movie) => { %>
         <div>
-            <form action="/update/<%= movie.id %>?favorite=<%= movie.favorite %>" method="POST">
+            <form action="/addtofavorites/<%= movie.id %>" method="POST">
                 <img src=<%= movie.picture %> alt=<%= movie.title %>/>
                 <p class="title"><%= movie.title %></p>
                 <p class="year">(<%= movie.year %>)</p>
