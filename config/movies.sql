@@ -49,7 +49,7 @@ CREATE TABLE `movies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `movies` (`id`, `title`, `year`, `picture`, `favorites`)
+INSERT INTO `movies` (`id`, `title`, `year`, `picture`, `favorite`)
 VALUES
   (1,'La grande vadrouille','1966','https://images-na.ssl-images-amazon.com/images/M/MV5BODc0NjVhZTktYjFiMy00YmRiLWJiZDAtODBkZDI2OTkwNjRjXkEyXkFqcGdeQXVyMjQ3NzUxOTM@._V1_SX300.jpg',false),
   (2,'Avengers','2012','https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',false),

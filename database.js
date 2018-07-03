@@ -1,3 +1,5 @@
+'use strict';
+
 const mysql = require('mysql');
 
 // First you need to create a connection to the db
@@ -9,49 +11,30 @@ const connexion = mysql.createPool({
     database: 'movies'
 });
 
+
 let listMovies = (callback) => {
 
     let query = "SELECT * FROM movies";
 
-    connexion.query(query, (err, movies) => {
-        if (err)
-            callback(err, null);
-        else
-            callback(null, movies);
-    });
+    connexion.query(query, callback)
 };
 
 let createMovie = (movie, callback) => {
     let query = "INSERT INTO movies SET ?";
 
-    connexion.query(query, movie, (err, movie) => {
-        if (err)
-            callback(err, null);
-        else
-            callback(null, movie);
-    });
+    connexion.query(query, movie, callback);
 };
 
 let deleteMovie = (id, callback) => {
     let query = "DELETE FROM movies WHERE `id` = ?";
 
-    connexion.query(query, [id], (err, rows) => {
-        if (err)
-            callback(err, null);
-        else
-            callback(null, rows);
-    });
+    connexion.query(query, [id], callback);
 };
 
 let updateMovie = (favorite, id, callback) => {
-    let query = "UPDATE movies SET favorite = NOT ?  WHERE id = ?";
+    let query = "UPDATE movies SET `favorite` = NOT ?  WHERE id = ?";
 
-    connexion.query(query, [favorite, id], (err, rows) => {
-        if (err)
-            callback(err, null);
-        else
-            callback(null, rows);
-    });
+    connexion.query(query, [favorite, id], callback);
 };
 
 module.exports = {
