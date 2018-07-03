@@ -26,7 +26,10 @@ application.get('/', (request, response) => {
         if (err)
             throw err;
         else {
-            response.render('main', {movies: SortMovieByTitle(movies), myFavorites: FirstThreeFavoriteFilms(movies, 3)});
+            response.render('main', {
+                movies: SortMovieByTitle(movies),
+                myFavorites: FirstThreeFavoriteFilms(movies, 3)
+            });
         }
     });
 });
