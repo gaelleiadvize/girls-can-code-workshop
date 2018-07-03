@@ -44,7 +44,7 @@ CREATE TABLE `movies` (
   `title` varchar(50) DEFAULT NULL,
   `year` char(10) DEFAULT NULL,
   `picture` varchar(512) DEFAULT NULL,
-  `favorites` boolean DEFAULT FALSE ,
+  `favorite` boolean DEFAULT FALSE ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

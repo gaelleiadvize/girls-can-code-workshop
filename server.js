@@ -1,68 +1,84 @@
 const express = require('express');
-const application = express();
 const database = require('./database');
+const bodyParser = require('body-parser');
+const application = express();
 
 application.set('view engine', 'ejs');
 application.use(express.static('public'));
+application.use(bodyParser.urlencoded({extended: false}));
+application.use(bodyParser.json());
 
 application.get('/', (request, response) => {
 
-    database
-    .list()
-    .then((movies) => {
+    let SortMovieByTitle = (movies) => {
+        return movies.sort(function(a, b) {
+            if (a.title < b.title) return -1;
+            if (a.title > b.title) return 1;
+            return 0;
+        });
+    };
 
-        response.render('main', {movies: movies}, function(err, result) {
-            if (err) throw err;
+    let FirstThreeFavoriteFilms = (movies, limit) => {
+        return movies.filter(movie => movie.favorite === 1).slice(0, limit);
+    };
 
-            console.log("all is good");
-        })
+    database.list(function(err, movies) {
+        if (err)
+            throw err;
+        else {
+            response.render('main', {
+                movies: SortMovieByTitle(movies),
+                myFavorites: FirstThreeFavoriteFilms(movies, 3)
+            });
+        }
     });
-
 });
 
 application.post('/create', (request, response) => {
 
-    const title = request.body.title;
-    const year = request.body.year;
-    const picture = request.body.picture;
+    const movie = {
+        title: request.body.title,
+        year: request.body.year,
+        picture: request.body.picture,
+    };
 
-    database
-    .create(title, year, picture)
-    .then((movieCreated) => {
-        console.log("movie added to database : " + movieCreated);
-
-        response.redirect("/");
-    }).catch((err) => {
-        return console.error(err);
+    database.create(movie, function(err, movieCreated) {
+        if (err)
+            throw err;
+        else {
+            console.log("movie created into database");
+            response.redirect("/");
+        }
     });
 
 });
 
-application.post('/favorite', (request, response) => {
+application.post('/update/:id', (request, response) => {
 
-    const id = request.body.id;
-    const favorite = request.body.favorite;
+    const id = request.params.id;
+    const favorite = request.query.favorite;
 
-    database.update(favorite, id).then((movieUpdated) => {
-        console.log("movie updated to database : " + movieUpdated);
-
-        response.redirect("/");
-    }).catch((err) => {
-        return console.error(err);
+    database.update(favorite, id, function(err, movieUpdated) {
+        if (err)
+            throw err;
+        else {
+            console.log("movie updated to database");
+            response.redirect("/");
+        }
     });
 
 });
 
-application.delete('/delete', (request, response) => {
+application.post('/delete/:id', (request, response) => {
+    const id = request.params.id;
 
-    const id = request.body.id;
-
-    database.delete(id).then((movieDeleted) => {
-        console.log("movie deleted to database : " + movieDeleted);
-
-        response.redirect("/");
-    }).catch((err) => {
-        return console.error(err);
+    database.delete(id, function(err, movieDeleted) {
+        if (err)
+            throw err;
+        else {
+            console.log("movie deleted to database");
+            response.redirect("/");
+        }
     });
 
 });
