@@ -44,12 +44,12 @@ CREATE TABLE `movies` (
   `title` varchar(50) DEFAULT NULL,
   `year` char(10) DEFAULT NULL,
   `picture` varchar(512) DEFAULT NULL,
-  `favorites` boolean DEFAULT FALSE ,
+  `favorite` boolean DEFAULT FALSE ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `movies` (`id`, `title`, `year`, `picture`, `favorites`)
+INSERT INTO `movies` (`id`, `title`, `year`, `picture`, `favorite`)
 VALUES
   (1,'La grande vadrouille','1966','http://fr.web.img6.acsta.net/c_215_290/pictures/16/06/16/12/01/072037.jpg',false),
   (2,'Avengers','2012','http://fr.web.img2.acsta.net/r_1280_720/medias/nmedia/18/85/31/58/20042068.jpg',true);

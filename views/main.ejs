@@ -80,11 +80,13 @@
         <!-- loop over movies and render them -->
         <% movies.forEach((movie) => { %>
         <div>
-            <img src=<%= movie.picture %> alt=<%= movie.title %>/>
-            <p class="title"><%= movie.title %></p>
-            <p class="year">(<%= movie.year %>)</p>
-            <button type="submit" value="Submit" class="star"><img src="images/star.png"
-                                                                   alt="put movie in favorite"/></button>
+            <form action="/update/<%= movie.id %>?favorite=<%= movie.favorite %>" method="POST">
+                <img src=<%= movie.picture %> alt=<%= movie.title %>/>
+                <p class="title"><%= movie.title %></p>
+                <p class="year">(<%= movie.year %>)</p>
+                <button type="submit" value="Submit" class="star"><img src="images/star.png"
+                                                                       alt="put movie in favorite"/></button>
+            </form>
         </div>
         <% }) %>
     </div>

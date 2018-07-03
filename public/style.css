@@ -145,7 +145,12 @@ nav .active {
     display: block;
 }
 
-.myList .title {
+.moviesList .star img {
+    height: 20px;
+    display: block;
+}
+
+.myList .title, .moviesList .star {
     font-weight: bold;
     margin: 10px 0 10px;
     font-size: 23px;

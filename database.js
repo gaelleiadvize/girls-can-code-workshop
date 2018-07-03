@@ -44,9 +44,9 @@ let deleteMovie = (id, callback) => {
 };
 
 let updateMovie = (favorite, id, callback) => {
-    let query = "UPDATE movies SET favorite = " + favorite + "  WHERE id = " + id;
+    let query = "UPDATE movies SET favorite = NOT ?  WHERE id = ?";
 
-    connexion.query(query, (err, rows) => {
+    connexion.query(query, [favorite, id], (err, rows) => {
         if (err)
             callback(err, null);
         else

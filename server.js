@@ -1,7 +1,7 @@
 const express = require('express');
-const application = express();
 const database = require('./database');
 const bodyParser = require('body-parser');
+const application = express();
 
 application.set('view engine', 'ejs');
 application.use(express.static('public'));
@@ -18,15 +18,15 @@ application.get('/', (request, response) => {
         });
     };
 
-    let FirstThreeFavoriteFilms = (movies) => {
-        return movies.filter(movie => movie.favorites === 1).slice(0, 3);
+    let FirstThreeFavoriteFilms = (movies, limit) => {
+        return movies.filter(movie => movie.favorite === 1).slice(0, limit);
     };
 
     database.list(function(err, movies) {
         if (err)
             throw err;
         else {
-            response.render('main', {movies: SortMovieByTitle(movies), myFavorites: FirstThreeFavoriteFilms(movies)});
+            response.render('main', {movies: SortMovieByTitle(movies), myFavorites: FirstThreeFavoriteFilms(movies, 3)});
         }
     });
 });
@@ -50,10 +50,10 @@ application.post('/create', (request, response) => {
 
 });
 
-application.put('/favorite', (request, response) => {
+application.post('/update/:id', (request, response) => {
 
-    const id = request.body.id;
-    const favorite = request.body.favorites;
+    const id = request.params.id;
+    const favorite = request.query.favorite;
 
     database.update(favorite, id, function(err, movieUpdated) {
         if (err)
