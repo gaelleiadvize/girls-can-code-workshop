@@ -12,9 +12,11 @@
     "docs": "apidoc -i src -o docs"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "mysql": "^2.15.0",
+    "node-mysql": "^0.4.2",
     "nodemon": "^1.17.5",
     "promise-mysql": "^3.3.1",
     "promised-ejs": "0.0.22"

@@ -33,7 +33,7 @@
             <ul>
                 <% myFavorites.forEach((favorite) => { %>
                 <li>
-                    <form action="" method="">
+                    <form action="/delete/<%= favorite.id %>" method="POST">
                         <img src=<%= favorite.picture %> alt="movie" class="popcorn"/>
                         <div class="title"><%= favorite.title %></div>
                         <div class="line">
@@ -52,19 +52,19 @@
             </ul>
         </div>
         <div class="form">
-            <h3 class="orangeBg">Add to my list</h3>
-            <form action="./" method="post">
+            <h3 class="orangeBg">Add to my movie list</h3>
+            <form action="/create" method="post">
                 <div class="line">
-                    <label for="">Title :</label>
-                    <input type="text" name="" id=""/>
+                    <label for="title">Title :</label>
+                    <input type="text" name="title"/>
                 </div>
                 <div class="line">
-                    <label for="">Year :</label>
-                    <input type="text" name="" id=""/>
+                    <label for="year">Year :</label>
+                    <input type="text" name="year"/>
                 </div>
                 <div class="line">
-                    <label for="">Director :</label>
-                    <input type="text" name="" id=""/>
+                    <label for="picture">Picture :</label>
+                    <input type="text" name="picture"/>
                 </div>
                 <button type="submit" value="Add to my list" class="addButton">Add to my list</button>
             </form>
@@ -83,39 +83,10 @@
             <img src=<%= movie.picture %> alt=<%= movie.title %>/>
             <p class="title"><%= movie.title %></p>
             <p class="year">(<%= movie.year %>)</p>
+            <button type="submit" value="Submit" class="star"><img src="images/star.png"
+                                                                   alt="put movie in favorite"/></button>
         </div>
         <% }) %>
-
-        <div>
-            <img src="images/homefront.png" alt="Homefront"/>
-            <p class="title">Homefront</p>
-            <p class="year">(2013)</p>
-        </div>
-        <div>
-            <img src="images/theCounselor.png" alt="The counselor"/>
-            <p class="title">The counselor</p>
-            <p class="year">(2013)</p>
-        </div>
-        <div>
-            <img src="images/afterEarth.png" alt="After Earth"/>
-            <p class="title">After Earth</p>
-            <p class="year">(2013)</p>
-        </div>
-        <div>
-            <img src="images/americanHustle.png" alt="American Hustle"/>
-            <p class="title">American Hustle</p>
-            <p class="year">(2013)</p>
-        </div>
-        <div>
-            <img src="images/acod.png" alt="A.C.O.D."/>
-            <p class="title">A.C.O.D.</p>
-            <p class="year">(2013)</p>
-        </div>
-        <div>
-            <img src="images/anchoMan.png" alt="anchoMan"/>
-            <p class="title">anchoMan 2</p>
-            <p class="year">(2013)</p>
-        </div>
     </div>
 
 </div>

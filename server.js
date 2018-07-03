@@ -1,14 +1,17 @@
 const express = require('express');
 const application = express();
 const database = require('./database');
+const bodyParser = require('body-parser');
 
 application.set('view engine', 'ejs');
 application.use(express.static('public'));
+application.use(bodyParser.urlencoded({extended: false}));
+application.use(bodyParser.json());
 
 application.get('/', (request, response) => {
 
-    let sortMovieByTitle = (movies) => {
-        movies.sort(function(a, b) {
+    let SortMovieByTitle = (movies) => {
+        return movies.sort(function(a, b) {
             if (a.title < b.title) return -1;
             if (a.title > b.title) return 1;
             return 0;
@@ -23,29 +26,31 @@ application.get('/', (request, response) => {
         if (err)
             throw err;
         else {
-            response.render('main', {movies: sortMovieByTitle(movies), myFavorites: FirstThreeFavoriteFilms});
+            response.render('main', {movies: SortMovieByTitle(movies), myFavorites: FirstThreeFavoriteFilms(movies)});
         }
     });
 });
 
 application.post('/create', (request, response) => {
 
-    const title = request.body.title;
-    const year = request.body.year;
-    const picture = request.body.picture;
+    const movie = {
+        title: request.body.title,
+        year: request.body.year,
+        picture: request.body.picture,
+    };
 
-    database.create(title, year, picture, function(err, movieCreated) {
+    database.create(movie, function(err, movieCreated) {
         if (err)
             throw err;
         else {
-            console.log("movie updated to database : " + movieCreated);
+            console.log("movie created into database");
             response.redirect("/");
         }
     });
 
 });
 
-application.post('/favorite', (request, response) => {
+application.put('/favorite', (request, response) => {
 
     const id = request.body.id;
     const favorite = request.body.favorites;
@@ -54,22 +59,21 @@ application.post('/favorite', (request, response) => {
         if (err)
             throw err;
         else {
-            console.log("movie updated to database : " + movieUpdated);
+            console.log("movie updated to database");
             response.redirect("/");
         }
     });
 
 });
 
-application.delete('/delete', (request, response) => {
-
-    const id = request.body.id;
+application.post('/delete/:id', (request, response) => {
+    const id = request.params.id;
 
     database.delete(id, function(err, movieDeleted) {
         if (err)
             throw err;
         else {
-            console.log("movie deleted to database : " + movieDeleted);
+            console.log("movie deleted to database");
             response.redirect("/");
         }
     });
