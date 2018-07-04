@@ -16,15 +16,13 @@ application.use(bodyParser.json());
 application.get('/', (request, response) => {
 
     let SortMovieByTitle = (movies) => {
-        return movies.sort(function(a, b) {
-            if (a.title < b.title) return -1;
-            if (a.title > b.title) return 1;
-            return 0;
-        });
+        // TODO
+        return movies
     };
 
     let FirstThreeFavoriteFilms = (movies, limit) => {
-        return movies.filter(movie => movie.favorite === 1).slice(0, limit);
+        // TODO 
+        return movies
     };
 
     database.list(function(err, movies) {

@@ -20,21 +20,15 @@ let listMovies = (callback) => {
 };
 
 let createMovie = (movie, callback) => {
-    let query = "INSERT INTO movies SET ?";
-
-    connexion.query(query, movie, callback);
+    // TODO
 };
 
 let deleteMovie = (id, callback) => {
-    let query = "DELETE FROM movies WHERE `id` = ?";
-
-    connexion.query(query, [id], callback);
+    // TODO
 };
 
 let updateMovie = (favorite, id, callback) => {
-    let query = "UPDATE movies SET `favorite` =  ?  WHERE id = ?";
-
-    connexion.query(query, [favorite, id], callback);
+    // TODO
 };
 
 module.exports = {
