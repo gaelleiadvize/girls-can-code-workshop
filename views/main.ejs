@@ -46,8 +46,8 @@
                             <span>Director:</span>
                             <span class="orange">Director</span>
                         </div>
-                        <button type="submit" value="Submit" class="trash"><img src="images/trash.png"
-                                                                                alt="remove from favorites"/></button>
+                        <button type="submit" value="Submit" class="star"><img src="images/star.png"
+                                                                                alt="release movie from favorite"/></button>
                     </form>
                 </li>
                 <% }) %>
@@ -88,6 +88,10 @@
                 <p class="year">(<%= movie.year %>)</p>
                 <button type="submit" value="Submit" class="star"><img src="images/star.png"
                                                                        alt="put movie in favorite"/></button>
+            </form>
+            <form action="/delete/<%= movie.id %>" method="POST">
+                <button type="submit" value="Submit" class="trash"><img src="images/trash.png"
+                                                                       alt="Delete movie"/></button>
             </form>
         </div>
         <% }) %>
