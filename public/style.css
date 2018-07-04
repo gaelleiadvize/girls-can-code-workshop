@@ -130,7 +130,7 @@ nav .active {
     height: 100px;
 }
 
-.myList .trash {
+.myList .trash, .myList .star, .moviesList .star {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -140,12 +140,22 @@ nav .active {
     cursor: pointer;
 }
 
-.myList .trash img {
+.moviesList .star {
+    position: relative;
+    top: -265px;
+    left: 110px;
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.myList .star img {
     height: 20px;
     display: block;
 }
 
-.moviesList .star img {
+.moviesList .star img, .moviesList .trash img {
     height: 20px;
     display: block;
 }
@@ -166,9 +176,18 @@ nav .active {
     color: #eb5f48;
 }
 
-.form {
+.myFavoriteMovies .form {
     width: 40%;
     margin-left: 3%;
+}
+
+.moviesList .form {
+    height: 310px;
+}
+
+.moviesList .form form {
+    padding: 0;
+    height: 260px;
 }
 
 .form form {

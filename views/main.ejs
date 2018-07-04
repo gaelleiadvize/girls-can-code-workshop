@@ -33,7 +33,7 @@
             <ul>
                 <% myFavorites.forEach((favorite) => { %>
                 <li>
-                    <form action="/delete/<%= favorite.id %>" method="POST">
+                    <form action="/update/<%= favorite.id %>?favorite=<%= favorite.favorite %>" method="POST">
                         <img src=<%= favorite.picture %> alt="movie" class="popcorn"/>
                         <div class="title"><%= favorite.title %></div>
                         <div class="line">
@@ -44,8 +44,8 @@
                             <span>Director:</span>
                             <span class="orange">Director</span>
                         </div>
-                        <button type="submit" value="Submit" class="trash"><img src="images/trash.png"
-                                                                                alt="Delete movie"/></button>
+                        <button type="submit" value="Submit" class="star"><img src="images/star.png"
+                                                                                alt="release movie from favorite"/></button>
                     </form>
                 </li>
                 <% }) %>
@@ -79,13 +79,17 @@
 
         <!-- loop over movies and render them -->
         <% movies.forEach((movie) => { %>
-        <div>
+        <div class="form">
             <form action="/update/<%= movie.id %>?favorite=<%= movie.favorite %>" method="POST">
                 <img src=<%= movie.picture %> alt=<%= movie.title %>/>
                 <p class="title"><%= movie.title %></p>
                 <p class="year">(<%= movie.year %>)</p>
                 <button type="submit" value="Submit" class="star"><img src="images/star.png"
                                                                        alt="put movie in favorite"/></button>
+            </form>
+            <form action="/delete/<%= movie.id %>" method="POST">
+                <button type="submit" value="Submit" class="trash"><img src="images/trash.png"
+                                                                       alt="Delete movie"/></button>
             </form>
         </div>
         <% }) %>
